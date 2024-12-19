@@ -2,8 +2,6 @@
 
 This repository contains Python scripts for analyzing audio signals and extracting features for speech recognition and other machine learning tasks. The code demonstrates recording audio, visualizing waveforms, generating spectrograms, and extracting **Mel-Frequency Cepstral Coefficients (MFCCs)**.
 
-Additionally, this repository includes a detailed example of the Fourier Transform in both LaTeX and PDF formats, providing a mathematical explanation and visualization of how time-domain signals transform into the frequency domain.
-
 ---
 
 ## Features
@@ -11,7 +9,6 @@ Additionally, this repository includes a detailed example of the Fourier Transfo
 - Visualize time-domain waveforms using Matplotlib.
 - Generate spectrograms to analyze frequency variations over time.
 - Extract MFCCs, a compact representation of audio signals, for machine learning.
-- Understand the Fourier Transform with provided LaTeX and PDF documentation.
 
 ---
 

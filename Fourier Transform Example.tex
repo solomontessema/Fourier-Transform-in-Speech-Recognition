@@ -1,0 +1,88 @@
+\documentclass[letterpaper, 11pt]{article} % Document class with paper size and font size
+
+% Preamble: Import necessary packages
+\usepackage[utf8]{inputenc} % Input encoding
+\usepackage[T1]{fontenc}    % Font encoding
+\usepackage{amsmath, amssymb} % For math symbols and equations
+\usepackage{geometry}       % For page layout
+\geometry{margin=1.25in}    % Slightly larger margins (1.25 inches)
+\usepackage{graphicx}       % For including graphics
+\usepackage{hyperref}       % For hyperlinks
+\usepackage{enumitem}       % For customizing lists
+\usepackage{microtype}      % For better text alignment and kerning
+\usepackage{lmodern}        % Use modern fonts for improved rendering
+
+% Optional: Disable Synctex file creation
+\synctex=0
+
+% Title, Author, and Date
+\title{\textbf{Fourier Transform Example}} % Bolded title for emphasis
+\author{\textsc{Solomon Tessema}}         % Small caps for author name
+\date{\today}
+
+\begin{document}
+
+% Title Page
+\maketitle
+
+\section*{Fourier Transform of a Sine Wave}
+
+Given a sine wave in the time domain:
+\[
+x(t) = \sin(2 \pi f_0 t)
+\]
+where \( f_0 = 5 \, \text{Hz} \), we compute its Fourier Transform using the formula:
+\[
+X(f) = \int_{-\infty}^\infty x(t) e^{-j 2 \pi f t} \, dt
+\]
+
+\subsection*{Step 1: Rewrite the Sine Wave Using Euler's Formula}
+Using Euler's formula:
+\[
+\sin(2 \pi f_0 t) = \frac{1}{2j} \left( e^{j 2 \pi f_0 t} - e^{-j 2 \pi f_0 t} \right)
+\]
+Substitute this into the Fourier Transform formula:
+\[
+X(f) = \int_{-\infty}^\infty \frac{1}{2j} \left( e^{j 2 \pi f_0 t} - e^{-j 2 \pi f_0 t} \right) e^{-j 2 \pi f t} \, dt
+\]
+
+\subsection*{Step 2: Simplify the Expression}
+Distribute \( e^{-j 2 \pi f t} \):
+\[
+X(f) = \frac{1}{2j} \left( \int_{-\infty}^\infty e^{j 2 \pi (f_0 - f) t} \, dt - \int_{-\infty}^\infty e^{-j 2 \pi (f_0 + f) t} \, dt \right)
+\]
+
+\subsection*{Step 3: Solve Each Integral}
+The Fourier Transform of a complex exponential is:
+\[
+\int_{-\infty}^\infty e^{j 2 \pi \alpha t} \, dt =
+\begin{cases} 
+    \infty, & \text{if } \alpha = 0, \\
+    0, & \text{otherwise}.
+\end{cases}
+\]
+1. For \( \int_{-\infty}^\infty e^{j 2 \pi (f_0 - f) t} \, dt \):
+   \[
+   \text{This evaluates to } \delta(f - f_0).
+   \]
+2. For \( \int_{-\infty}^\infty e^{-j 2 \pi (f_0 + f) t} \, dt \):
+   \[
+   \text{This evaluates to } \delta(f + f_0).
+   \]
+
+\subsection*{Step 4: Combine Results}
+The Fourier Transform of \( x(t) = \sin(2 \pi f_0 t) \) is:
+\[
+X(f) = \frac{1}{2j} \left( \delta(f - f_0) - \delta(f + f_0) \right)
+\]
+
+\subsection*{Conclusion}
+In the frequency domain, the sine wave has two peaks:
+\begin{itemize}[label=\textbullet, leftmargin=*]
+    \item A positive peak at \( f = f_0 \) (5 Hz).
+    \item A negative peak at \( f = -f_0 \) (-5 Hz).
+\end{itemize}
+
+This representation shows that the signal oscillates at these two frequencies, and the Fourier Transform breaks down the time-domain signal into its frequency components.
+
+\end{document}
